@@ -6,164 +6,90 @@
                 border-collapse: collapse;
             }
             th, td {
-                border: 1px solid black;
+                border: 2px solid black;
                 padding: 8px;
             }
+            .main{
+                float: left;
+                margin-left: 15%;
+                margin-right: 15%;
+                margin-top: 0%;
+                margin-bottom: 0%;
+                border-left: 2px solid black;
+                border-right: 2px solid black;
+            }
+            .modlist{
+                margin-left: 8px;
+                margin-right: 8px;
+            }
         </style>
+        <script>
+            //array to hold mods
+            const modlist = new Array;
+            
+            //function to add mods to array
+            function addmodtoarray(name, version, projectid, fileid, link, depency){
+                modlist.push([name, version, projectid, fileid, link, depency]);
+            }
+            
+            //function to update mod table
+            function createmodtable(htmltable, modarray){
+                var tableheaders = "<tr><th>Mod Name</th><th>Version</th><th>Project ID</th><th>File ID</th><th>Link</th><th>Dependencies</th></tr>";
+                var outputmodtable = tableheaders;
+                for(let i = 0; i < modarray.length; i++) {
+                    var modrow = '<tr> <td class="ModName">'+modarray[i][0]+'</td> <td>'+modarray[i][1]+'</td> <td>'+modarray[i][2]+'</td> <td>'+modarray[i][3]+'</td> <td> <a class="modurl" target="_blank"> '+modarray[i][4]+' </a> </td> <td>'+modarray[i][5]+'</td></tr>';
+                    outputmodtable = outputmodtable + modrow;
+                }
+                htmltable.innerHTML=outputmodtable;
+            }
+            //add mods to array
+            //example
+            //addmodtoarray("", "", "", "", "", "NA");
+            addmodtoarray("The One Probe", "1.12-1.4.28", "245211", "2667280", "https://www.curseforge.com/minecraft/mc-mods/the-one-probe/files/2667280", "NA");
+            addmodtoarray("Baubles", "1.12-1.5.2", "227083", "2518667", "https://www.curseforge.com/minecraft/mc-mods/baubles/files/2518667", "NA");
+            addmodtoarray("Just Enough Items (JEI)", "1.12.2-4.16.1.302", "238222", "3043174", "https://www.curseforge.com/minecraft/mc-mods/jei/files/3043174", "NA");
+            addmodtoarray("More Overlays", "1.15.1-mc1.12.2", "243478", "2745657", "https://www.curseforge.com/minecraft/mc-mods/more-overlays/files/2745657", "NA");
+            addmodtoarray("Thermal Expansion", "1.12.2-5.5.7.1", "69163", "2926431", "https://www.curseforge.com/minecraft/mc-mods/thermal-expansion/files/2926431", "-Thermal Founcation -CodeChicken Lib 1.8+");
+            addmodtoarray("CodeChicken Lib 1.8.+", "1.12.2-3.2.3.358", "242818", "2779848", "https://www.curseforge.com/minecraft/mc-mods/codechicken-lib-1-8/files/2779848", "NA");
+            addmodtoarray("Thermal Foundation", "1.12.2-2.6.7.1", "222880", "2926428", "https://www.curseforge.com/minecraft/mc-mods/thermal-foundation/files/2926428", "-CoFH Core -CoFH World");
+            addmodtoarray("CoFH Core", "1.12.2-4.6.6.1", "69162", "2920433", "https://www.curseforge.com/minecraft/mc-mods/cofh-core/files/2920433", "NA");
+            addmodtoarray("CoFH World", "1.12.2-1.4.0.1", "271384", "2920434", "https://www.curseforge.com/minecraft/mc-mods/cofh-world/files/2920434", "NA");
+            addmodtoarray("Thermal Innovation", "1.12.2-0.3.6.1", "291737", "2920441", "https://www.curseforge.com/minecraft/mc-mods/thermal-innovation/files/2920441", "-Thermal Foundation");
+            addmodtoarray("Thermal Cultivation", "1.12.2-0.3.6.1", "271835", "2920437", "https://www.curseforge.com/minecraft/mc-mods/thermal-cultivation/files/2920437", "-Thermal Foundation");
+            addmodtoarray("Thermal Dynamics", "1.12.2-2.5.6.1", "227443", "2920505", "https://www.curseforge.com/minecraft/mc-mods/thermal-dynamics/files/2920505", "-Thermal Foundation -CodeChicken Lib 1.8+");
+            addmodtoarray("Immersive Engineering", "0.12-98", "231951", "2974106", "https://www.curseforge.com/minecraft/mc-mods/immersive-engineering/files/2974106", "NA");
+            addmodtoarray("Ender Storage 1.8.+", "1.12.2-2.4.6.137", "245174", "2755787", "https://www.curseforge.com/minecraft/mc-mods/ender-storage-1-8/files/2755787", "-CodeChicken Lib 1.8+");
+            addmodtoarray("CraftTweaker", "1.12-4.1.20.660", "239197", "3435328", "https://www.curseforge.com/minecraft/mc-mods/crafttweaker/files/3435328", "NA");
+            addmodtoarray("ModTweaker", "4.0.20.4", "220954", "3368737", "https://www.curseforge.com/minecraft/mc-mods/modtweaker/files/3368737", "NA");
+            addmodtoarray("Redstone Flux", "1.12-2.1.1.1", "270789", "2920436", "https://www.curseforge.com/minecraft/mc-mods/redstone-flux/files/2920436", "NA");
+            addmodtoarray("Redstone Arsenal", "1.12.2-2.6.6.1", "70631", "2939416", "https://www.curseforge.com/minecraft/mc-mods/redstone-arsenal/files/2939416", "-CoFH Core");
+            addmodtoarray("MTLib", "3.0.7", "253211", "3308160", "https://www.curseforge.com/minecraft/mc-mods/mtlib/files/3308160", "-CraftTweaker");
+            addmodtoarray("Roguelike Dungeons -- Fnar's Edition", "v2.4.0", "373157", "3384430", "https://www.curseforge.com/minecraft/mc-mods/fnars-roguelike-dungeons/files/3384430", "NA");
+        </script>
     </head>
     <body>
-        <div>
-            <h1>Losts 1.12.2 Test Modpack</h1>
-            <h2>Mod List</h2>
-            <table>
-                <tr>
-                    <th>Mod Name</th>
-                    <th>Version</th>
-                    <th>Project ID</th>
-                    <th>File ID</th>
-                    <th>Link</th>
-                </tr>
-                <tr>
-                    <td>The One Probe</td>
-                    <td>1.12-1.4.28</td>
-                    <td>245211</td>
-                    <td>2667280</td>
-                    <td>https://www.curseforge.com/minecraft/mc-mods/the-one-probe/files/2667280</td>
-                </tr>
-                <tr>
-                    <td>Baubles</td>
-                    <td>1.12-1.5.2</td>
-                    <td>227083</td>
-                    <td>2518667</td>
-                    <td>https://www.curseforge.com/minecraft/mc-mods/baubles/files/2518667</td>
-                </tr>
-                <tr>
-                    <td>Just Enough Items (JEI)</td>
-                    <td>1.12.2-4.16.1.302</td>
-                    <td>238222</td>
-                    <td>3043174</td>
-                    <td>https://www.curseforge.com/minecraft/mc-mods/jei/files/3043174</td>
-                </tr>
-                <tr>
-                    <td>More Overlays</td>
-                    <td>1.15.1-mc1.12.2</td>
-                    <td>243478</td>
-                    <td>2745657</td>
-                    <td>https://www.curseforge.com/minecraft/mc-mods/more-overlays/files/2745657</td>
-                </tr>
-                <tr>
-                    <td>Thermal Expansion</td>
-                    <td>1.12.2-5.5.7.1</td>
-                    <td>69163</td>
-                    <td>2926431</td>
-                    <td>https://www.curseforge.com/minecraft/mc-mods/thermal-expansion/files/2926431</td>
-                </tr>
-                <tr>
-                    <td>CodeChicken Lib 1.8.+</td>
-                    <td>1.12.2-3.2.3.358</td>
-                    <td>242818</td>
-                    <td>2779848</td>
-                    <td>https://www.curseforge.com/minecraft/mc-mods/codechicken-lib-1-8/files/2779848</td>
-                </tr>
-                <tr>
-                    <td>Thermal Foundation</td>
-                    <td>1.12.2-2.6.7.1</td>
-                    <td>222880</td>
-                    <td>2926428</td>
-                    <td>https://www.curseforge.com/minecraft/mc-mods/thermal-foundation/files/2926428</td>
-                </tr>
-                <tr>
-                    <td>CoFH Core</td>
-                    <td>1.12.2-4.6.6.1</td>
-                    <td>69162</td>
-                    <td>2920433</td>
-                    <td>https://www.curseforge.com/minecraft/mc-mods/cofh-core/files/2920433</td>
-                </tr>
-                <tr>
-                    <td>CoFH World</td>
-                    <td>1.12.2-1.4.0.1</td>
-                    <td>271384</td>
-                    <td>2920434</td>
-                    <td>https://www.curseforge.com/minecraft/mc-mods/cofh-world/files/2920434</td>
-                </tr>
-                <tr>
-                    <td>Thermal Innovation</td>
-                    <td>1.12.2-0.3.6.1</td>
-                    <td>291737</td>
-                    <td>2920441</td>
-                    <td>https://www.curseforge.com/minecraft/mc-mods/thermal-innovation/files/2920441</td>
-                </tr>
-                <tr>
-                    <td>Thermal Cultivation</td>
-                    <td>1.12.2-0.3.6.1</td>
-                    <td>271835</td>
-                    <td>2920437</td>
-                    <td>https://www.curseforge.com/minecraft/mc-mods/thermal-cultivation/files/2920437</td>
-                </tr>
-                <tr>
-                    <td>Thermal Dynamics</td>
-                    <td>1.12.2-2.5.6.1</td>
-                    <td>227443</td>
-                    <td>2920505</td>
-                    <td>https://www.curseforge.com/minecraft/mc-mods/thermal-dynamics/files/2920505</td>
-                </tr>
-                <tr>
-                    <td>Immersive Engineering</td>
-                    <td>0.12-98</td>
-                    <td>231951</td>
-                    <td>2974106</td>
-                    <td>https://www.curseforge.com/minecraft/mc-mods/immersive-engineering/files/2974106</td>
-                </tr>
-                <tr>
-                    <td>Ender Storage 1.8.+</td>
-                    <td>1.12.2-2.4.6.137</td>
-                    <td>245174</td>
-                    <td>2755787</td>
-                    <td>https://www.curseforge.com/minecraft/mc-mods/ender-storage-1-8/files/2755787</td>
-                </tr>
-                <tr>
-                    <td>CraftTweaker</td>
-                    <td>1.12-4.1.20.660</td>
-                    <td>239197</td>
-                    <td>3435328</td>
-                    <td>https://www.curseforge.com/minecraft/mc-mods/crafttweaker/files/3435328</td>
-                </tr>
-                <tr>
-                    <td>ModTweaker</td>
-                    <td>4.0.20.4</td>
-                    <td>220954</td>
-                    <td>3368737</td>
-                    <td>https://www.curseforge.com/minecraft/mc-mods/modtweaker/files/3368737</td>
-                </tr>
-                <tr>
-                    <td>Redstone Flux</td>
-                    <td>1.12-2.1.1.1</td>
-                    <td>270789</td>
-                    <td>2920436</td>
-                    <td>https://www.curseforge.com/minecraft/mc-mods/redstone-flux/files/2920436</td>
-                </tr>
-                <tr>
-                    <td>Redstone Arsenal</td>
-                    <td>1.12.2-2.6.6.1</td>
-                    <td>70631</td>
-                    <td>2939416</td>
-                    <td>https://www.curseforge.com/minecraft/mc-mods/redstone-arsenal/files/2939416</td>
-                </tr>
-                <tr>
-                    <td>MTLib</td>
-                    <td>3.0.7</td>
-                    <td>253211</td>
-                    <td>3308160</td>
-                    <td>https://www.curseforge.com/minecraft/mc-mods/mtlib/files/3308160</td>
-                </tr>
-                <tr>
-                    <td>Roguelike Dungeons -- Fnar's Edition</td>
-                    <td>v2.4.0</td>
-                    <td>373157</td>
-                    <td>3384430</td>
-                    <td>https://www.curseforge.com/minecraft/mc-mods/fnars-roguelike-dungeons/files/3384430</td>
-                </tr>
-            </table>
+        <div class="main">
+            <div class="modlist">
+                <h1>Losts 1.12.2 Test Modpack</h1>
+                <h2>Mod List</h2>
+                <hr>
+                <table id="modlist">
+
+                </table>
+            </div>
         </div>
     </body>
+    <script>
+        //get the modlist table
+        var modlisttable = document.getElementById("modlist");
+        createmodtable(modlisttable, modlist)
+    </script>
+    <script>
+        //small litle piece of java script to auto convert the link instead of copy pasting twice
+        var modlinks = document.getElementsByClassName("modurl");
+        for (let i = 0; i < modlinks.length; i++) {
+            var link = modlinks[i].innerHTML;
+            modlinks[i].href = link;
+        }
+    </script>
 </html>
