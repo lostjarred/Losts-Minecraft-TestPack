@@ -14,7 +14,7 @@ to the version of the mods you need if all else fails
 1. Click download as zip button
 2. Open Multimc
 3. Right click, Select Create Instance, Name as you want, Select 1.16.5 as the Version
-4. Right click  the created instance, Select edit instance, Under version select Install Forge, Select 36.2.22, Click ok
+4. Right click  the created instance, Select edit instance, Under version select Install Forge, Select 36.2.35, Click ok
 5. Close the window, Right click on instance, Select minecraft folder
 6. Open Downloaded zip from earlier, goto doc folder, Open modlist.html
 7. On page that opened up you will see a table click all the links in the "Link" Column, this will take to the download page for each mod, Download the mod repeat for whole table
