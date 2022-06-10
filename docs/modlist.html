@@ -6,145 +6,84 @@
                 border-collapse: collapse;
             }
             th, td {
-                border: 1px solid black;
+                border: 2px solid black;
                 padding: 8px;
             }
+            .main{
+                float: left;
+                margin-left: 15%;
+                margin-right: 15%;
+                margin-top: 0%;
+                margin-bottom: 0%;
+                border-left: 2px solid black;
+                border-right: 2px solid black;
+            }
+            .modlist{
+                margin-left: 8px;
+                margin-right: 8px;
+            }
         </style>
+        <script>
+            //array to hold mods
+            const modlist = new Array;
+            
+            //function to add mods to array
+            function addmodtoarray(name, version, projectid, fileid, link, depency){
+                modlist.push([name, version, projectid, fileid, link, depency]);
+            }
+            
+            //function to update mod table
+            function createmodtable(htmltable, modarray){
+                var tableheaders = "<tr><th>Mod Name</th><th>Version</th><th>Project ID</th><th>File ID</th><th>Link</th><th>Dependencies</th></tr>";
+                var outputmodtable = tableheaders;
+                for(let i = 0; i < modarray.length; i++) {
+                    var modrow = '<tr> <td class="ModName">'+modarray[i][0]+'</td> <td>'+modarray[i][1]+'</td> <td>'+modarray[i][2]+'</td> <td>'+modarray[i][3]+'</td> <td> <a class="modurl" target="_blank"> '+modarray[i][4]+' </a> </td> <td>'+modarray[i][5]+'</td></tr>';
+                    outputmodtable = outputmodtable + modrow;
+                }
+                htmltable.innerHTML=outputmodtable;
+            }
+            //add mods to array
+            //example
+            //addmodtoarray("", "", "", "", "", "NA");
+            addmodtoarray("The One Probe", "1.16-3.1.4", "245211", "3319255", "https://www.curseforge.com/minecraft/mc-mods/the-one-probe/files/2667280", "NA");
+            addmodtoarray("Just Enough Items (JEI)", "1.16.5-7.7.1.134", "238222", "3519343", "https://www.curseforge.com/minecraft/mc-mods/jei/files/3519343", "NA");
+            addmodtoarray("Just Enough Resources (JER)", "1.16.3-0.12.0.100", "240630", "3066754", "https://www.curseforge.com/minecraft/mc-mods/just-enough-resources-jer/files/3066754", "- Just Enough Items");
+            addmodtoarray("CoFH Core", "1.16.5-1.3.1", "69162", "3407019", "https://www.curseforge.com/minecraft/mc-mods/cofh-core/files/3407019", "NA");
+            addmodtoarray("Thermal Foundation", "1.16.5-1.3.2", "222880", "3412300", "https://www.curseforge.com/minecraft/mc-mods/thermal-foundation/files/3412300", "- CoFH Core");
+            addmodtoarray("Thermal Expansion", "1.16.5-1.3.0", "69163", "3404884", "https://www.curseforge.com/minecraft/mc-mods/thermal-expansion/files/3404884", "- Thermal Foundation");
+            addmodtoarray("Thermal Cultivation", "1.16.5-1.3.0", "271835", "3404883", "https://www.curseforge.com/minecraft/mc-mods/thermal-cultivation/files/3404883", "- Thermal Foundation");
+            addmodtoarray("Thermal Innovation", "1.16.5-1.3.0", "291737", "3404886", "https://www.curseforge.com/minecraft/mc-mods/thermal-innovation/files/3404886", "- Thermal Foundation");
+            addmodtoarray("Thermal Locomotion", "1.16.5-1.3.0", "406959", "3404887", "https://www.curseforge.com/minecraft/mc-mods/thermal-locomotion/files/3404887", "- Thermal Foundation");
+            addmodtoarray("Immersive Engineering", "1.16.5-5.0.5-140", "231951", "3497359", "https://www.curseforge.com/minecraft/mc-mods/immersive-engineering/files/3497359", "NA");
+            addmodtoarray("Configured", "1.2.0", "457570", "3434071", "https://www.curseforge.com/minecraft/mc-mods/configured/files/3434071", "NA");
+            addmodtoarray("Controlling", "7.0.0.27", "250398", "3501319", "https://www.curseforge.com/minecraft/mc-mods/controlling/files/3501319", "NA");
+            addmodtoarray("More Overlays Updated", "1.18.15", "391382", "3395133", "https://www.curseforge.com/minecraft/mc-mods/more-overlays-updated/files/3395133", "NA");
+            addmodtoarray("Mouse Tweaks", "2.14", "60089", "3202662", "https://www.curseforge.com/minecraft/mc-mods/mouse-tweaks/files/3202662", "NA");
+            addmodtoarray("TOP Addons", "1.16.5-2.1.5-beta", "247111", "3319050", "https://www.curseforge.com/minecraft/mc-mods/top-addons/files/3319050", "NA");
+        </script>
     </head>
     <body>
-        <div>
+        <div class="main">
             <h1>Losts 1.16.5 Test Modpack</h1>
             <h2>Mod List</h2>
-            <table>
-                <tr>
-                    <th>Mod Name</th>
-                    <th>Version</th>
-                    <th>Project ID</th>
-                    <th>File ID</th>
-                    <th>Link</th>
-					<th>Dependency</th>
-                </tr>
-                <tr>
-                    <td>The One Probe</td>
-                    <td>1.16-3.1.4</td>
-                    <td>245211</td>
-                    <td>3319255</td>
-                    <td>https://www.curseforge.com/minecraft/mc-mods/the-one-probe/files/2667280</td>
-					<td>NA</td>
-                </tr>
-				<tr>
-                    <td>Just Enough Items (JEI)</td>
-                    <td>1.16.5-7.7.1.134</td>
-                    <td>238222</td>
-                    <td>3519343</td>
-                    <td>https://www.curseforge.com/minecraft/mc-mods/jei/files/3519343</td>
-					<td>NA</td>
-                </tr>
-				<tr>
-                    <td>Just Enough Resources (JER)</td>
-                    <td>1.16.3-0.12.0.100</td>
-                    <td>240630</td>
-                    <td>3066754</td>
-                    <td>https://www.curseforge.com/minecraft/mc-mods/just-enough-resources-jer/files/3066754</td>
-					<td>- Just Enough Items</td>
-                </tr>
-				<tr>
-                    <td>CoFH Core</td>
-                    <td>1.16.5-1.3.1</td>
-                    <td>69162</td>
-                    <td>3407019</td>
-                    <td>https://www.curseforge.com/minecraft/mc-mods/cofh-core/files/3407019</td>
-					<td>NA</td>
-                </tr>
-				<tr>
-                    <td>Thermal Foundation</td>
-                    <td>1.16.5-1.3.2</td>
-                    <td>222880</td>
-                    <td>3412300</td>
-                    <td>https://www.curseforge.com/minecraft/mc-mods/thermal-foundation/files/3412300</td>
-					<td>- CoFH Core</td>
-                </tr>
-				<tr>
-                    <td>Thermal Expansion</td>
-                    <td>1.16.5-1.3.0</td>
-                    <td>69163</td>
-                    <td>3404884</td>
-                    <td>https://www.curseforge.com/minecraft/mc-mods/thermal-expansion/files/3404884</td>
-					<td>- Thermal Foundation</td>
-                </tr>
-				<tr>
-                    <td>Thermal Cultivation</td>
-                    <td>1.16.5-1.3.0</td>
-                    <td>271835</td>
-                    <td>3404883</td>
-                    <td>https://www.curseforge.com/minecraft/mc-mods/thermal-cultivation/files/3404883</td>
-					<td>- Thermal Foundation</td>
-                </tr>
-				<tr>
-                    <td>Thermal Innovation</td>
-                    <td>1.16.5-1.3.0</td>
-                    <td>291737</td>
-                    <td>3404886</td>
-                    <td>https://www.curseforge.com/minecraft/mc-mods/thermal-innovation/files/3404886</td>
-					<td>- Thermal Foundation</td>
-                </tr>
-				<tr>
-                    <td>Thermal Locomotion</td>
-                    <td>1.16.5-1.3.0</td>
-                    <td>406959</td>
-                    <td>3404887</td>
-                    <td>https://www.curseforge.com/minecraft/mc-mods/thermal-locomotion/files/3404887</td>
-					<td>- Thermal Foundation</td>
-                </tr>
-				<tr>
-                    <td>Immersive Engineering</td>
-                    <td>1.16.5-5.0.5-140</td>
-                    <td>231951</td>
-                    <td>3497359</td>
-                    <td>https://www.curseforge.com/minecraft/mc-mods/immersive-engineering/files/3497359</td>
-					<td>NA</td>
-                </tr>
-				<tr>
-                    <td>Configured</td>
-                    <td>1.2.0</td>
-                    <td>457570</td>
-                    <td>3434071</td>
-                    <td>https://www.curseforge.com/minecraft/mc-mods/configured/files/3434071</td>
-					<td>NA</td>
-                </tr>
-				<tr>
-                    <td>Controlling</td>
-                    <td>7.0.0.27</td>
-                    <td>250398</td>
-                    <td>3501319</td>
-                    <td>https://www.curseforge.com/minecraft/mc-mods/controlling/files/3501319</td>
-					<td>NA</td>
-                </tr>
-				<tr>
-                    <td>More Overlays Updated</td>
-                    <td>1.18.15</td>
-                    <td>391382</td>
-                    <td>3395133</td>
-                    <td>https://www.curseforge.com/minecraft/mc-mods/more-overlays-updated/files/3395133</td>
-					<td>NA</td>
-                </tr>
-				<tr>
-                    <td>Mouse Tweaks</td>
-                    <td>2.14</td>
-                    <td>60089</td>
-                    <td>3202662</td>
-                    <td>https://www.curseforge.com/minecraft/mc-mods/mouse-tweaks/files/3202662</td>
-					<td>NA</td>
-                </tr>
-				<tr>
-                    <td>TOP Addons</td>
-                    <td>1.16.5-2.1.5-beta</td>
-                    <td>247111</td>
-                    <td>3319050</td>
-                    <td>https://www.curseforge.com/minecraft/mc-mods/top-addons/files/3319050</td>
-					<td>NA</td>
-                </tr>
+            <hr>
+            <div class="modlist">
+            <table id="modlist">
             </table>
+            </div>
         </div>
     </body>
+    <script>
+        //get the modlist table
+        var modlisttable = document.getElementById("modlist");
+        createmodtable(modlisttable, modlist)
+    </script>
+    <script>
+        //small litle piece of java script to auto convert the link instead of copy pasting twice
+        var modlinks = document.getElementsByClassName("modurl");
+        for (let i = 0; i < modlinks.length; i++) {
+            var link = modlinks[i].innerHTML;
+            modlinks[i].href = link;
+        }
+    </script>
 </html>
