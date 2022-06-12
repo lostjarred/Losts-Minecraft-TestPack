@@ -105,6 +105,12 @@
       "required": true
     },
     {
+      "comment" : "Refined Pipes",
+      "projectID": 370696,
+      "fileID": 3630290,
+      "required": true
+    },
+    {
       "comment" : "TOP Addons",
       "projectID": 247111,
       "fileID": 3555274,
