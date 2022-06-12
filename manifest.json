@@ -92,10 +92,16 @@
       "fileID": 3639017,
       "required": true
     },
-	{
+    {
       "comment" : "Mouse Tweaks",
       "projectID": 60089,
       "fileID": 3202662,
+      "required": true
+    },
+    {
+      "comment" : "Patchouli",
+      "projectID": 306770,
+      "fileID": 3459118,
       "required": true
     },
     {
